@@ -1,0 +1,71 @@
+spring:
+  application:
+    name: bid-on
+
+  mvc:
+    contentnegotiation:
+      media-types:
+        js: text/javascript
+
+  servlet:
+    multipart:
+      enabled: true
+      location: C:/temp
+      max-file-size: 50MB
+      max-request-size: 50MB
+      file-size-threshold: 5MB
+
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+  thymeleaf:
+    cache: false
+
+  jpa:
+    database: oracle
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+    database-platform: org.hibernate.dialect.OracleDialect
+    properties:
+      hibernate:
+        format_sql: true
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-name: google
+            client-id: 571432372202-tu75i2464nela4cuqo4frjdgo8gdqs26.apps.googleusercontent.com
+            client-secret: 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
+            redirect-uri: http://localhost:8090/login/oauth2/code/google
+            authorization-grant-type: authorization_code
+            scope:
+              - email
+              - profile
+
+server:
+  port: 8090
+
+file:
+  upload:
+    review:
+      dir: C:/class/code/springBoot/bid-on/src/main/resources/static/user/images/review
+    profile:
+      dir: C:/class/code/springBoot/bid-on/src/main/resources/static/user/images/profile
+    banner:
+      dir: C:/class/code/springBoot/bid-on/src/main/resources/static/user/images/banner
+
+    spring:
+  web:
+    resources:
+      static-locations: 
+        - classpath:/static/
+        - file:C:/class/code/springBoot/bid-on/src/main/resources/static/
